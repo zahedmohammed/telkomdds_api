@@ -1,0 +1,1744 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "UseeTvGo-Mockup",
+    "description" : "UseeTvGo Mockup API",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/telkomdds/UseeTvGo-Mockup/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "paths" : {
+    "/accesstoken" : {
+      "post" : {
+        "tags" : [ "Security" ],
+        "summary" : "get access token",
+        "description" : "get access token",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/accesstoken"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/player/play" : {
+      "post" : {
+        "tags" : [ "Streaming" ],
+        "summary" : "get stream tv",
+        "description" : "get stream tv",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/playerPlay"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "internal error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/internalerror"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/channel/list" : {
+      "get" : {
+        "tags" : [ "Streaming" ],
+        "summary" : "get list channel",
+        "description" : "get list channel",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "categoryId",
+          "in" : "query",
+          "description" : "category_id",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/channel"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "internal error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/internalerror"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/category/list" : {
+      "get" : {
+        "tags" : [ "Streaming" ],
+        "summary" : "get list category channel",
+        "description" : "get list category channel",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/category"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "internal error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/internalerror"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schedule" : {
+      "get" : {
+        "tags" : [ "Streaming" ],
+        "summary" : "get list schedule by tv code and date",
+        "description" : "get list schedule by tv code and date",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "date",
+          "in" : "query",
+          "description" : "date",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "tvCode",
+          "in" : "query",
+          "description" : "tvcode",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/schedule"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "internal error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/internalerror"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/register" : {
+      "post" : {
+        "tags" : [ "Register" ],
+        "summary" : "register",
+        "description" : "register",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/register"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/registerSuccess"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "internal error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/internalerror"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/login" : {
+      "post" : {
+        "tags" : [ "Login" ],
+        "summary" : "login",
+        "description" : "login",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/login"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/loginSuccess"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "internal error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/internalerror"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/password/{userId}" : {
+      "put" : {
+        "tags" : [ "Update Password" ],
+        "summary" : "update password",
+        "description" : "update password",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/updatePassword"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/updatePasswordresponse"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "internal error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/internalerror"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/profile/{userId}" : {
+      "put" : {
+        "tags" : [ "Update Profile" ],
+        "summary" : "update proflie",
+        "description" : "update profile",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/profile"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/updateProfileresponse"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "internal error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/internalerror"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/forget/password" : {
+      "post" : {
+        "tags" : [ "Forget Password" ],
+        "summary" : "forget password",
+        "description" : "forget password",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/forgetPassword"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/forgetPasswordresponse"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "internal error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/internalerror"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/verification/{verificationCode}" : {
+      "get" : {
+        "tags" : [ "Verification" ],
+        "summary" : "Email Verification",
+        "description" : "Email Verification",
+        "parameters" : [ {
+          "name" : "verificationCode",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/emailVerification"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/schemas/emailnotVerified"
+          }
+        }
+      }
+    },
+    "/user/myindihome/login" : {
+      "post" : {
+        "tags" : [ "Login" ],
+        "summary" : "Login MyIndihome",
+        "description" : "Login MyIndihome",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/login"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/loginindihomeSuccess"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/schemas/emailnotVerified"
+          }
+        }
+      }
+    },
+    "/user/gmail/login" : {
+      "post" : {
+        "tags" : [ "Login" ],
+        "summary" : "Login Google",
+        "description" : "Login Google",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/logingmail"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/loginsosmedSuccess"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/schemas/emailnotVerified"
+          }
+        }
+      }
+    },
+    "/user/facebook/login" : {
+      "post" : {
+        "tags" : [ "Login" ],
+        "summary" : "Login Facebook",
+        "description" : "Login Facebook",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/loginfacebook"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/loginfacebookSuccess"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/schemas/emailnotVerified"
+          }
+        }
+      }
+    },
+    "/content/list" : {
+      "get" : {
+        "tags" : [ "Home" ],
+        "summary" : "content",
+        "description" : "content",
+        "parameters" : [ {
+          "name" : "accesstoken",
+          "in" : "header",
+          "description" : "id from login",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/listcontent"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/unauthorized"
+                }
+              }
+            }
+          },
+          "500" : {
+            "$ref" : "#/components/schemas/emailnotVerified"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "accesstoken" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/accesstoken_data"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Your Request Has Been Processed"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 200
+          }
+        }
+      },
+      "accesstoken_data" : {
+        "properties" : {
+          "access_token" : {
+            "type" : "string",
+            "example" : "3dd336133accd66afe328154dc3f7ce7"
+          },
+          "android_version" : {
+            "type" : "string",
+            "example" : "5.4.0"
+          },
+          "ios_version" : {
+            "type" : "string",
+            "example" : "2.0.1"
+          },
+          "stb_version" : {
+            "type" : "string",
+            "example" : "1.0.0.0"
+          }
+        }
+      },
+      "playerPlay" : {
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "example" : "sctv"
+          },
+          "contentType" : {
+            "type" : "string",
+            "example" : "livetv"
+          },
+          "outputType" : {
+            "type" : "string",
+            "example" : "json"
+          },
+          "startTime" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "endTime" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "unauthorized" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "type" : "object",
+            "example" : { }
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Request unauthorized"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 401
+          }
+        }
+      },
+      "internalerror" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "type" : "object",
+            "example" : { }
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Internal server Error"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 500
+          }
+        }
+      },
+      "channel" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "type" : "object"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        },
+        "example" : {
+          "success" : true,
+          "data" : [ {
+            "id" : "11",
+            "tvName" : "ANTV",
+            "tvCode" : "antv",
+            "tvDescription" : "ANTV TV online dan streaming Indonesia yang menayangkan berita, gosip, hiburan, olahraga dan sepakbola",
+            "smallLogo1" : "logo_antv_small1.png?v=2.0.0.9",
+            "smallLogo2" : "logo_antv_small2.png?v=2.0.0.9",
+            "bigLogo1" : "logo_antv_big1.png?v=2.0.0.9",
+            "bigLogo2" : "logo_antv_big2.png?v=2.0.0.9",
+            "categoryName" : "Local",
+            "liveStream" : "/jhos/antv",
+            "isMultiscreen" : "no",
+            "webUrl" : "http://www.useetv.com/livetv/antv",
+            "detail" : {
+              "resultCode" : 0,
+              "resultmessage" : "succeess"
+            },
+            "currentSchedule" : {
+              "event" : "Arjun Arohi",
+              "date" : "11-12-2018",
+              "clock" : "08:45",
+              "startTime" : "2018-12-11 08:45:00",
+              "endTime" : "2018-12-11 10:30:00",
+              "fileStatus" : "exist",
+              "fileName" : "antv_201812111030.mp4",
+              "tvodStream" : "/tvod/mp4:/antv/antv_201812111030.mp4",
+              "status" : "1",
+              "tvodId" : "797210"
+            }
+          }, {
+            "id" : "13",
+            "tvName" : "Indosiar",
+            "tvCode" : "indosiar",
+            "tvDescription" : "PT. Indosiar Visual Mandiri Memang Untuk Anda, TV Indonesia",
+            "smallLogo1" : "logo_indosiar_small1.png?v=2.0.0.9",
+            "smallLogo2" : "logo_indosiar_small2.png?v=2.0.0.9",
+            "bigLogo1" : "logo_indosiar_big1.png?v=2.0.0.9",
+            "bigLogo2" : "logo_indosiar_big2.png?v=2.0.0.9",
+            "categoryName" : "Local",
+            "liveStream" : "/jhos/indosiar",
+            "isMultiscreen" : "no",
+            "webUrl" : "http://www.useetv.com/livetv/indosiar",
+            "detail" : {
+              "resultCode" : 0,
+              "resultMessage" : "success"
+            },
+            "currentSchedule" : {
+              "vent" : "Pintu Berkah",
+              "date" : "11-12-2018",
+              "clock" : "08:30",
+              "startTime" : "2018-12-11 08:30:00",
+              "endTime" : "2018-12-11 10:00:00",
+              "fileStatus" : "exist",
+              "fileName" : "indosiar_201812111000.mp4",
+              "tvodStream" : "/tvod/mp4:/indosiar/indosiar_201812111000.mp4",
+              "status" : "1",
+              "tvodId" : "751730"
+            }
+          } ],
+          "message" : "Your Request Has Been Processed",
+          "code" : 200
+        }
+      },
+      "category" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "type" : "object"
+          }
+        },
+        "example" : {
+          "success" : true,
+          "data" : [ {
+            "id" : 0,
+            "categoryName" : "All Category"
+          }, {
+            "id" : 1,
+            "categoryName" : "News"
+          }, {
+            "id" : 2,
+            "categoryName" : "Sport"
+          }, {
+            "id" : 3,
+            "categoryName" : "Movies"
+          }, {
+            "id" : 4,
+            "categoryName" : "Documentary"
+          }, {
+            "id" : 5,
+            "categoryName" : "Knowledges"
+          }, {
+            "id" : 6,
+            "categoryName" : "Local"
+          }, {
+            "id" : 7,
+            "categoryName" : "Lifestyle"
+          }, {
+            "id" : 8,
+            "categoryName" : "Music"
+          }, {
+            "id" : 9,
+            "categoryName" : "General Entertainment"
+          }, {
+            "id" : 10,
+            "categoryName" : "TV Series"
+          }, {
+            "id" : 11,
+            "categoryName" : "Religi"
+          }, {
+            "id" : 12,
+            "categoryName" : "Kids"
+          }, {
+            "id" : 14,
+            "categoryName" : "In House"
+          }, {
+            "id" : 15,
+            "categoryName" : "Shopping TV"
+          } ]
+        }
+      },
+      "schedule" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "type" : "object"
+          }
+        },
+        "example" : {
+          "success" : true,
+          "data" : [ {
+            "event" : "Kabar Hari Ini",
+            "date" : "04-12-2018",
+            "clock" : "00:00",
+            "startTime" : "2018-12-04 00:00:00",
+            "endTime\"" : "2018-12-04 01:00:00",
+            "fileStatus" : "exist",
+            "fileName" : "tvone_201812040100.mp4",
+            "tvodStream" : "/tvod/mp4:/tvone/tvone_201812040100.mp4",
+            "status" : "1",
+            "webUrl" : "http://www.useetv.com/tvod/tvone/1543856400/1543860000",
+            "appear" : "Recorded"
+          }, {
+            "event" : "Lejel Home Shopping 2018",
+            "date" : "04-12-2018",
+            "clock" : "01:00",
+            "startTime" : "2018-12-04 01:00:00",
+            "endTime" : "2018-12-04 01:30:00",
+            "fileStatus" : "exist",
+            "fileName" : "tvOne_201812040130.mp4",
+            "tvodStream" : "/tvod/mp4:/tvone/tvOne_201812040130.mp4",
+            "status" : "1",
+            "webUrl" : "http://www.useetv.com/tvod/tvOne/1543860000/1543861800",
+            "appear" : "Recorded"
+          } ]
+        }
+      },
+      "register" : {
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "example" : "muhammadwidyan36@gmail.com"
+          },
+          "fullName" : {
+            "type" : "string",
+            "example" : "widyan"
+          },
+          "birthday" : {
+            "type" : "string",
+            "format" : "dd/mm/yyyy",
+            "example" : "10/10/1995"
+          },
+          "gender" : {
+            "type" : "string",
+            "example" : "Laki-laki"
+          },
+          "password" : {
+            "type" : "string",
+            "example" : "password"
+          }
+        }
+      },
+      "registerSuccess" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/registerData"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Register successfull, Please Check Your Email to Verification"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 200
+          }
+        }
+      },
+      "registerData" : {
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "example" : "muhammadwidyan36@gmail.com"
+          },
+          "userId" : {
+            "type" : "string",
+            "example" : "270472034023h2398293"
+          },
+          "profile" : {
+            "$ref" : "#/components/schemas/profiles"
+          }
+        }
+      },
+      "profiles" : {
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "example" : "widyan"
+          },
+          "birthday" : {
+            "type" : "string",
+            "format" : "dd/mm/yyyy",
+            "example" : "10/10/1995"
+          },
+          "gender" : {
+            "type" : "string",
+            "example" : "Laki-laki"
+          },
+          "phoneNumber" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 82342349234
+          },
+          "status" : {
+            "type" : "string"
+          }
+        }
+      },
+      "login" : {
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "example" : "muhammadwidyan36@gmail.com"
+          },
+          "password" : {
+            "type" : "string",
+            "example" : "password"
+          }
+        }
+      },
+      "logingmail" : {
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "example" : "muhammadwidyan36@gmail.com"
+          },
+          "password" : {
+            "type" : "string",
+            "example" : "password"
+          },
+          "gmailId" : {
+            "type" : "string",
+            "example" : "123123123"
+          }
+        }
+      },
+      "loginfacebook" : {
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "example" : "muhammadwidyan36@gmail.com"
+          },
+          "password" : {
+            "type" : "string",
+            "example" : "password"
+          },
+          "facebookId" : {
+            "type" : "string",
+            "example" : "123123123"
+          }
+        }
+      },
+      "loginSuccess" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/loginData"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Your Request Has Been Process"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 200
+          }
+        }
+      },
+      "loginindihomeSuccess" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/loginDataindihome"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Your Request Has Been Process"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 200
+          }
+        }
+      },
+      "loginfacebookSuccess" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/loginDatafacebook"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Your Request Has Been Process"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 200
+          }
+        }
+      },
+      "loginsosmedSuccess" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/loginDatagmail"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Your Request Has Been Process"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 200
+          }
+        }
+      },
+      "loginData" : {
+        "properties" : {
+          "userToken" : {
+            "type" : "string",
+            "example" : "sbiurg8w98eryw4irgh38040903oierg.osihdoifsdio.asdfisfdd"
+          },
+          "profile" : {
+            "$ref" : "#/components/schemas/profileData"
+          }
+        }
+      },
+      "loginDataindihome" : {
+        "properties" : {
+          "userToken" : {
+            "type" : "string",
+            "example" : "sbiurg8w98eryw4irgh38040903oierg.osihdoifsdio.asdfisfdd"
+          },
+          "profile" : {
+            "$ref" : "#/components/schemas/profileData"
+          },
+          "loginWith" : {
+            "type" : "string",
+            "example" : "myindihome"
+          },
+          "myIndihomeNumber" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 122604225992
+          }
+        }
+      },
+      "loginDatagmail" : {
+        "properties" : {
+          "userToken" : {
+            "type" : "string",
+            "example" : "sbiurg8w98eryw4irgh38040903oierg.osihdoifsdio.asdfisfdd"
+          },
+          "profile" : {
+            "$ref" : "#/components/schemas/profileData"
+          },
+          "gmailId" : {
+            "type" : "string",
+            "example" : "122604225992"
+          },
+          "facebookId" : {
+            "type" : "string",
+            "example" : "-"
+          }
+        }
+      },
+      "loginDatafacebook" : {
+        "properties" : {
+          "userToken" : {
+            "type" : "string",
+            "example" : "sbiurg8w98eryw4irgh38040903oierg.osihdoifsdio.asdfisfdd"
+          },
+          "profile" : {
+            "$ref" : "#/components/schemas/profileData"
+          },
+          "gmailId" : {
+            "type" : "string",
+            "example" : "-"
+          },
+          "facebookId" : {
+            "type" : "string",
+            "example" : "122604225992"
+          }
+        }
+      },
+      "profileData" : {
+        "properties" : {
+          "userId" : {
+            "type" : "string",
+            "example" : "270472034023h2398293"
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "widyan"
+          },
+          "phoneNumber" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 82342349234
+          },
+          "gender" : {
+            "type" : "string",
+            "example" : "Laki-laki"
+          },
+          "birthday" : {
+            "type" : "string",
+            "format" : "dd/mm/yyyy",
+            "example" : "10/10/1995"
+          },
+          "email" : {
+            "type" : "string",
+            "example" : "muhammadwidyan36@gmail.com"
+          }
+        }
+      },
+      "updatePassword" : {
+        "properties" : {
+          "oldPassword" : {
+            "type" : "string",
+            "example" : "passwordLama"
+          },
+          "newPassword" : {
+            "type" : "string",
+            "example" : "passwordBaru"
+          }
+        }
+      },
+      "updatePasswordresponse" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "type" : "object",
+            "example" : { }
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Password updated"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 200
+          }
+        }
+      },
+      "profile" : {
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "example" : "widyan"
+          },
+          "birthday" : {
+            "type" : "string",
+            "format" : "dd/mm/yyyy",
+            "example" : "10/10/1995"
+          },
+          "gender" : {
+            "type" : "string",
+            "example" : "Laki-laki"
+          },
+          "phoneNumber" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 82342349234
+          }
+        }
+      },
+      "updateProfileresponse" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/profile"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Profile Updated"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 200
+          }
+        }
+      },
+      "forgetPassword" : {
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "example" : "muhammadwidyan36@gmail.com"
+          }
+        }
+      },
+      "forgetPasswordresponse" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "type" : "object",
+            "example" : { }
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Reset Password Successfully, please check your email"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 200
+          }
+        }
+      },
+      "emailVerification" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/verified"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Your Account has been activated, Please Login!"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 200
+          }
+        }
+      },
+      "verified" : {
+        "properties" : {
+          "userId" : {
+            "type" : "string",
+            "example" : "270472034023h2398293"
+          },
+          "email" : {
+            "type" : "string",
+            "example" : "muhammadwidyan36@gmail.com"
+          },
+          "isVerified" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "emailnotVerified" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "type" : "object",
+            "example" : { }
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Your Email has not been verified, please check your email and verification"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 500
+          }
+        }
+      },
+      "listcontent" : {
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "data" : {
+            "type" : "object"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "code" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        },
+        "example" : {
+          "success" : true,
+          "data" : [ {
+            "id" : "1",
+            "type" : "Today’s Favorite",
+            "category" : "tv",
+            "itemCount" : 1,
+            "item" : [ {
+              "id" : "53",
+              "code" : "net",
+              "name" : "Net",
+              "videoType" : "livetv",
+              "title" : "Ini Talkshow",
+              "subTitle" : "",
+              "desc" : "",
+              "location”" : "",
+              "info" : {
+                "actor" : "",
+                "director" : "",
+                "region" : "",
+                "genre" : "",
+                "category" : "",
+                "parentCategory" : "",
+                "year" : "",
+                "package" : "",
+                "packageCode" : "",
+                "price" : "",
+                "clipCode" : "",
+                "itemCode" : "",
+                "trailer" : ""
+              },
+              "startDate" : "",
+              "endDate" : "",
+              "smallImage1" : "logo_net_sl1.png",
+              "smallImage2" : "logo_net_small2.png",
+              "bigImage1" : "logo_net_big1.png",
+              "bigImage2" : "logo_net_big2.png",
+              "posterImage" : "",
+              "thumbnail" : "thumb-initalkshow2.png",
+              "extraContent" : "",
+              "extraVideo" : "",
+              "webUrl" : "http://www.useetv.com/livetv/net",
+              "urlStreaming" : "jhos/net",
+              "urlTrailer" : ""
+            } ]
+          }, {
+            "id" : "4",
+            "type" : "Happeing",
+            "category" : "event",
+            "itemCount" : 1,
+            "item" : [ {
+              "id" : "8L9gm_6RfrQ",
+              "code" : "",
+              "name" : "Gak Masuk Akal, Kereta Ini Melaju Cepat Tanpa Masinis Dan Rel",
+              "videoType" : "youtube",
+              "title" : "Gak Masuk Akal, Kereta Ini Melaju Cepat Tanpa Masinis Dan Rel",
+              "subTitle" : "Gak Masuk Akal, Kereta Ini Melaju Cepat Tanpa Masinis Dan Rel",
+              "desc" : "",
+              "location”" : "",
+              "info" : {
+                "actor" : "",
+                "director" : "",
+                "region" : "",
+                "genre" : "",
+                "category" : "",
+                "parentCategory" : "",
+                "year" : "",
+                "package" : "",
+                "packageCode" : "",
+                "price" : "",
+                "clipCode" : "",
+                "itemCode" : "",
+                "trailer" : ""
+              },
+              "startDate" : "2019-01-14T02:56:47.000Z",
+              "endDate" : "",
+              "smallImage1" : "logo-cover-garuda-riders-episode-3-small1.png",
+              "smallImage2" : "logo-cover-garuda-riders-episode-3-small2.png",
+              "bigImage1" : "logo-garudariders3-poster.jpg",
+              "bigImage2" : "logo-garudariders3-poster.jpg",
+              "posterImage" : "https://i.ytimg.com/vi/8L9gm_6RfrQ/mqdefault.jpg",
+              "thumbnail" : "https://i.ytimg.com/vi/8L9gm_6RfrQ/mqdefault.jpg",
+              "extraContent" : "",
+              "extraVideo" : "",
+              "webUrl" : "",
+              "urlStreaming" : "",
+              "urlTrailer" : ""
+            } ]
+          }, {
+            "id" : "3",
+            "type" : "Today’s Favorite",
+            "category" : "tv",
+            "itemCount" : 1,
+            "item" : [ {
+              "id" : "231",
+              "code" : "",
+              "name" : "",
+              "videoType" : "vod",
+              "title" : "Garuda Riders Episode 3: Selamat Datang di Akademi Kurmapati",
+              "subTitle" : "",
+              "desc" : "Alasan Narapati menghalangi cita-cita Naradja sebagai penunggang garuda karena ada trauma di masa lalu yang dihadapi Narapati dan Putri Anindya. Untuk terakhir kalinya, Narapati mengajak Naradja menghantarkan ubi-ubi makanan garuda di Akademi Kurmapati, sebuah sekolah khusus taruna penunggang garuda. Saat di Akademi Kurmapati, tiba-tiba Naradja menghilang!",
+              "location”" : "",
+              "info" : {
+                "actor" : "“Kuo, Yolanda, Vivi, Ari Rahmat, Rahmat Nur, Arie Widiawan",
+                "director" : "Johan Tri Handoyo",
+                "region" : "Indonesia",
+                "genre" : "",
+                "category" : "animasi_movie",
+                "parentCategory" : "VOD",
+                "year" : "",
+                "package" : "Free",
+                "packageCode" : "OTTFREE",
+                "price" : "0",
+                "clipCode" : "OTT610287",
+                "itemCode" : "610287",
+                "trailer" : ""
+              },
+              "startDate" : "",
+              "endDate" : "",
+              "smallImage1" : "logo-cover-garuda-riders-episode-3-small1.png",
+              "smallImage2" : "logo-cover-garuda-riders-episode-3-small2.png",
+              "bigImage1" : "logo-garudariders3-poster.jpg",
+              "bigImage2" : "logo-garudariders3-poster.jpg",
+              "posterImage" : "logo-garudariders3-poster.jpg",
+              "thumbnail" : "logo-cover-garuda-riders-episode-3-small1.png",
+              "extraContent" : "",
+              "extraVideo" : "",
+              "webUrl" : "http://www.useetv.com/play/animasi_movie/231/garuda-riders-episode-3:-selamat-datang-di-akademi-kurmapati",
+              "urlStreaming" : "http://118.97.167.55/vod/_definst_/mp4:mp4/video/GARUDA-RIDERS-Episode-3-Selamat-Datang-di-Akademi-Kurmapati-useetvweb.mp4/Playlist.m3u8",
+              "urlTrailer" : ""
+            } ]
+          } ],
+          "message" : "Your Request Has Been Processed",
+          "code" : 200
+        }
+      }
+    },
+    "responses" : {
+      "unauthorized" : {
+        "description" : "unauthorized",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/unauthorized"
+            }
+          }
+        }
+      },
+      "internalerror" : {
+        "description" : "internal error",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/internalerror"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "basicAuth" : {
+        "type" : "http",
+        "scheme" : "basic"
+      }
+    }
+  }
+}
